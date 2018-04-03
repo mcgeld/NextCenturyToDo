@@ -1,3 +1,4 @@
+
 <h1>TO DO Application</h1>
 <p>Start typing to create a new To Do</p>
 <ul>
@@ -21,3 +22,11 @@
         <li class="completed" *ngFor="let todo of completedTodos">{{todo.name}}<button (click)="unCompleteTodo(todo)">Un-Complete</button></li>
     </ng-container>
 </ul>
+
+<div>
+    <h2>Mini Example :)</h2>
+    <form>
+        <input #todoInput placeholder="Wat do you need to do?">
+        <button type="submit" (click)="exampleAdd(todoInput)">Add</button>
+    </form>
+</div>
