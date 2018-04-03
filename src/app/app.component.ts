@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import {Component, HostListener, ViewChild} from "@angular/core";
 import { Store, select } from '@ngrx/store';
 import { CREATE_TODO, COMPLETE_TODO, UNCOMPLETE_TODO, SAVE_TODO, DELETE_TODO } from './todos';
 import { Todo } from './todo';
@@ -9,22 +9,23 @@ import { Todo } from './todo';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
-  todos = [];
-  completedTodos = [];
-  unCompletedTodos = [];
+
+    title = 'app';
+    todos = [];
+    completedTodos = [];
+    unCompletedTodos = [];
 
 
     constructor(private store: Store<any>) {
         store.select('todos').subscribe(todos => {
             this.setTodos(todos);
-            this.angular.element('.edit').focus();
+            // this.angular.element('.edit').focus();
         });
     }
 
     @HostListener('document:keypress', ['$event'])
     handleKeyboardEvent(event: KeyboardEvent) {
-        if(!this.store.select('editing')){
+        if (!this.store.select('editing')) {
             this.store.dispatch({type: CREATE_TODO, id: this.store.select('nextTodoId')});
         }
     }
@@ -40,13 +41,13 @@ export class AppComponent {
     }
 
     saveTodo(todo) {
-        var name = angular.element('#input-' + todo.id.toString()).text();
-        if(name !== ''){
-            this.store.dispatch({type: SAVE_TODO, todo: todo});
-        }
-        else {
-            this.deleteTodo(todo);
-        }
+        // var name = angular.element('#input-' + todo.id.toString()).text();
+        // if(name !== ''){
+        //     this.store.dispatch({type: SAVE_TODO, todo: todo});
+        // }
+        // else {
+        //     this.deleteTodo(todo);
+        // }
     }
 
     deleteTodo(todo) {
@@ -56,4 +57,14 @@ export class AppComponent {
     unCompleteTodo(todo) {
         this.store.dispatch({type: UNCOMPLETE_TODO, id: todo.id});
     }
+
+    // Example
+
+    exampleAdd(input) {
+        console.log('Text Entered: ' + input.value);
+
+        // Clear input field
+        input.value = '';
+    }
+
 }
