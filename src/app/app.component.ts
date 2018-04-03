@@ -14,7 +14,7 @@ export class AppComponent {
   unCompletedTodos = [];
 
 
-    constructor(private store: Store<AppState>) {
+    constructor(private store) {
         store.select('todos').subscribe(todos => {
             this.setTodos(todos);
         });
