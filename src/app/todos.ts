@@ -22,7 +22,6 @@ export function todosReducer(state = [], action) {
         case UNCOMPLETE_TODO: {
             return state.map(todo => todo.id === action.id ? {...todo, completed: false} : todo);
         }
-        }
         default: 
             return state;
     }
