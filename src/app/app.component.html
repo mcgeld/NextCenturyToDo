@@ -4,14 +4,14 @@
     <ng-container *ngIf="unCompletedTodos.length > 0">
         <h3>TO DO:</h3>
         <li *ngFor="let todo of unCompletedTodos">
-            <ng-container *ngIf="todo.name !== ''">
-                {{todo.name}}
+            <ng-container *ngIf="!todo.editing">
+                <span (click)="editTodo(todo)">{{todo.name}}</span>
                 <button (click)="completeTodo(todo)">Complete</button>
                 <button (click)="deleteTodo(todo)">Delete</button>
             </ng-container>
-            <ng-container *ngIf="todo.name == ''">
-                <input id="input-{{todo.id}}" type="text" style="width: 250px;">
-                <button (click)="saveTodo(todo)">Save</button>
+            <ng-container *ngIf="todo.editing">
+                <input #todoInput (keyup.enter)="saveTodo(todo, todoInput.value)" type="text" style="width: 250px;" value="{{todo.name}}">
+                <button (click)="saveTodo(todo, todoInput.value)">Save</button>
             </ng-container>
         </li>
     </ng-container>
