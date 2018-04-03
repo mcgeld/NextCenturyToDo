@@ -71,18 +71,4 @@ export class AppComponent {
     unCompleteTodo(todo) {
         this.store.dispatch({type: UNCOMPLETE_TODO, id: todo.id});
     }
-
-    // Example
-
-    exampleAdd(input) {
-        // This approach is less common. Because here you have access to the nativeElement which is the plain vanilla
-        // javascript DOM element. And this is usually overkill.
-        console.log('Using the ViewChild reference: ' + this.todoInput.nativeElement.value);
-
-        console.log('Text Entered: ' + input.value);
-
-        // Clear input field
-        input.value = '';
-    }
-
 }
