@@ -18,7 +18,7 @@ export function todosReducer(state = [], action) {
         case CREATE_TODO: {
             return [
                 ...state,
-                new Todo({id: action.id});
+                new Todo({id: action.id}),
             ];
         }
         case COMPLETE_TODO: {

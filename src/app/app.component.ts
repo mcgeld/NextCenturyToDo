@@ -10,11 +10,12 @@ import { Todo } from './todo';
 })
 export class AppComponent {
 
+    @ViewChild('todoInput') todoInput;
+
     title = 'app';
     todos = [];
     completedTodos = [];
     unCompletedTodos = [];
-
 
     constructor(private store: Store<any>) {
         store.select('todos').subscribe(todos => {
@@ -61,6 +62,10 @@ export class AppComponent {
     // Example
 
     exampleAdd(input) {
+        // This approach is less common. Because here you have access to the nativeElement which is the plain vanilla
+        // javascript DOM element. And this is usually overkill.
+        console.log('Using the ViewChild reference: ' + this.todoInput.nativeElement.value);
+
         console.log('Text Entered: ' + input.value);
 
         // Clear input field
