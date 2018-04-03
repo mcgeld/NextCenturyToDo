@@ -1,12 +1,23 @@
-<button (click)="testingClick()">Populate Dummy Todos</button>
+<h1>TO DO Application</h1>
+<p>Start typing to create a new To Do</p>
 <ul>
     <ng-container *ngIf="unCompletedTodos.length > 0">
-        <h2>TO DO:</h2>
-        <li *ngFor="let todo of unCompletedTodos">{{todo.name}}<button (click)="completeTodo(todo)">Complete</button></li>
+        <h3>TO DO:</h3>
+        <li *ngFor="let todo of unCompletedTodos">
+            <ng-container *ngIf="todo.name !== ''">
+                {{todo.name}}
+                <button (click)="completeTodo(todo)">Complete</button>
+                <button (click)="deleteTodo(todo)">Delete</button>
+            </ng-container>
+            <ng-container *ngIf="todo.name == ''">
+                <input id="input-{{todo.id}}" type="text" style="width: 250px;">
+                <button (click)="saveTodo(todo)">Save</button>
+            </ng-container>
+        </li>
     </ng-container>
 
     <ng-container *ngIf="completedTodos.length > 0">
-        <h2>COMPLETED:</h2>
+        <h3>COMPLETED:</h3>
         <li class="completed" *ngFor="let todo of completedTodos">{{todo.name}}<button (click)="unCompleteTodo(todo)">Un-Complete</button></li>
     </ng-container>
 </ul>
