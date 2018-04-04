@@ -94,6 +94,5 @@ export class AppComponent {
                 }, 200);
             }, 0);
         });
-        });
     }
 }

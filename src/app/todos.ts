@@ -20,7 +20,7 @@ export function todosReducer(state = [], action) {
             return [
                 ...state,
                 new Todo({id: action.id, name: action.name, editing: true, new: true});
-            ];
+            ]
         }
         case TodoActions.DELETE_TODO: {
             return state.filter(todo => todo.id !== action.id);
