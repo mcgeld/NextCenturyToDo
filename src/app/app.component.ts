@@ -36,16 +36,21 @@ export class AppComponent {
     @HostListener('document:keypress', ['$event'])
     handleKeyboardEvent(event: KeyboardEvent) {
         if(!this.editing){
+            var id = this.nextTodoId;
             this.store.dispatch({type: CREATE_TODO, id: this.nextTodoId, name: event.key});
         }
     }
 
     completeTodo(todo) {
-        this.store.dispatch({type: COMPLETE_TODO, id: todo.id});
+        $('#row-' + todo.id.toString()).hide(400, () => {
+            this.store.dispatch({type: COMPLETE_TODO, id: todo.id});
+        });
     }
 
     deleteTodo(todo) {
-        this.store.dispatch({type: DELETE_TODO, id: todo.id});
+        $('#row-' + todo.id.toString()).hide(400, () => {
+            this.store.dispatch({type: DELETE_TODO, id: todo.id});
+        });
     }
 
     editTodo(todo) {
@@ -69,6 +74,9 @@ export class AppComponent {
     }
 
     unCompleteTodo(todo) {
-        this.store.dispatch({type: UNCOMPLETE_TODO, id: todo.id});
+        console.log();
+        $('#completeRow-' + todo.id.toString()).hide(400, () => {
+            this.store.dispatch({type: UNCOMPLETE_TODO, id: todo.id});
+        });
     }
 }

@@ -1,3 +1,49 @@
-.completed {
-    text-decoration: line-through;
+.todoButtons {
+    text-align: right;
+}
+
+.todo {
+    background-color: white;
+    border: solid black 1px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 5px;
+    padding: 2px;
+    text-align: left;
+}
+
+.uncompletePanel {
+    padding-right: 7px;
+    padding-left: 30px;
+}
+
+.completePanel {
+    padding-left: 7px;
+    padding-right: 30px;
+}
+
+.panel-body {
+    background-color: lightgray;
+    padding: 10px;
+    border-radius: 0 0 10px 10px;
+    border: solid black 1px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    border-top: none;
+    text-align: center;
+}
+
+.panel-heading {
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+    border: solid black 1px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    border-bottom: none;
+}
+
+.panel-heading.todo-heading {
+    background-color: lightblue;
+}
+
+.panel-heading.complete-heading {
+    background-color: lightgreen;
 }
