@@ -16,7 +16,7 @@ export function todosReducer(state = [], action) {
         case CREATE_TODO: {
             return [
                 ...state,
-                new Todo({id: action.id, name: action.name, editing: true});
+                new Todo({id: action.id, name: action.name, editing: true, new: true});
             ];
         }
         case DELETE_TODO: {
