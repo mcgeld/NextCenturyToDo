@@ -34,7 +34,7 @@ export function todosReducer(state = [], action) {
             return state.map(todo => todo.id === action.todo.id ? {...todo, ...action.todo} : todo);
         }
         case TodoActions.UNCOMPLETE_TODO: {
-            return state.map(todo => todo.id === action.id ? {...todo, completed: false} : todo);
+            return state.map(todo => todo.id === action.id ? {...todo, ...{completed: false, new: true}} : todo);
         }
         case TodoActions.YOU_ARE_NOT_NEW: {
             return state.map(todo => todo.id === action.id ? {...todo, new: false} : todo);
