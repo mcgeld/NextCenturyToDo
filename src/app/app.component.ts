@@ -18,6 +18,7 @@ export class AppComponent {
     unCompletedTodos = [];
 
     constructor(private store: Store<any>) {
+        setTimeout(() => { $(".titleAnimation").addClass("finish"); }, 1000);
         store.select('todos').subscribe(todos => {
             this.setTodos(todos);
             setTimeout(() => {
