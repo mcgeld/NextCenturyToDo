@@ -35,7 +35,7 @@ export class AppComponent {
 
     @HostListener('document:keypress', ['$event'])
     handleKeyboardEvent(event: KeyboardEvent) {
-        if(!this.editing){
+        if(!this.editing && !(event.key === 'Enter')){
             var id = this.nextTodoId;
             this.store.dispatch({type: TodoActions.CREATE_TODO, id: id, name: event.key});
             setTimeout(() => {
