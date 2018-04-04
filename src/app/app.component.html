@@ -6,12 +6,12 @@
             </div>
             <div class="panel-body">
                 <ng-container *ngIf="unCompletedTodos.length > 0">
-                    <div id="{{'row-' + todo.id.toString()}}" class="todo row" *ngFor="let todo of unCompletedTodos">
+                    <div id="{{'row-' + todo.id.toString()}}" [ngClass]="{'new': todo.new}" class="todo row" *ngFor="let todo of unCompletedTodos">
                         <ng-container *ngIf="!todo.editing">
-                            <div class="todoBody col-sm-8">
-                                <span (click)="editTodo(todo)">{{todo.name}}</span>
+                            <div class="todoBody col-sm-10" (click)="editTodo(todo)">
+                                <span class="todoSpan">{{todo.name}}</span>
                             </div>
-                            <div class="todoButtons col-sm-4">
+                            <div class="todoButtons col-sm-2">
                                 <button class="btn btn-success" (click)="completeTodo(todo)">
                                     <i class="fas fa-check"></i>
                                 </button>
@@ -21,11 +21,13 @@
                             </div>
                         </ng-container>
                         <ng-container *ngIf="todo.editing">
-                            <div class="todoBody col-sm-8">
-                                <input #todoInput (keyup.enter)="saveTodo(todo, todoInput.value)" type="text" style="width: 250px;" value="{{todo.name}}">
+                            <div class="todoBody col-sm-10">
+                                <input #todoInput class="todoInput" (keyup.enter)="saveTodo(todo, todoInput.value)" type="text" value="{{todo.name}}">
                             </div>
-                            <div class="todoButtons col-sm-4">
-                                <button (click)="saveTodo(todo, todoInput.value)">Save</button>
+                            <div class="todoButtons col-sm-2">
+                                <button class="btn btn-primary" (click)="saveTodo(todo, todoInput.value)">
+                                    <i class="fas fa-save"></i>
+                                </button>
                             </div>
                         </ng-container>
                     </div>
@@ -42,11 +44,11 @@
             </div>
             <div class="panel-body">
                 <ng-container *ngIf="completedTodos.length > 0">
-                    <div id="{{'completeRow-' + todo.id.toString()}}" class="todo row" *ngFor="let todo of completedTodos">
-                        <div class="todoBody col-sm-8">
+                    <div id="{{'completeRow-' + todo.id.toString()}}" [ngClass]="{'new': todo.new}" class="todo row" *ngFor="let todo of completedTodos">
+                        <div class="todoBody col-sm-10">
                             <span>{{todo.name}}</span>
                         </div>
-                        <div class="todoButtons col-sm-4">
+                        <div class="todoButtons col-sm-2">
                             <button class="btn btn-danger" (click)="unCompleteTodo(todo)">
                                 <i class="fas fa-minus"></i>
                             </button>

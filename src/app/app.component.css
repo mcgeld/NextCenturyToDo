@@ -8,8 +8,19 @@
     border-radius: 4px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     margin: 5px;
+    opacity: 1;
     padding: 2px;
     text-align: left;
+    transition: opacity ease-in-out 0.2s;
+}
+.todoInput {
+    width: 100%;
+    height: 100%;
+}
+
+.todoSpan {
+    width: 100%;
+    height: 100%;
 }
 
 .uncompletePanel {
@@ -40,10 +51,24 @@
     border-bottom: none;
 }
 
+.new {
+    opacity: 0;
+}
+
 .panel-heading.todo-heading {
     background-color: lightblue;
 }
 
 .panel-heading.complete-heading {
     background-color: lightgreen;
+}
+
+.todoBody {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.todoButtons {
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
