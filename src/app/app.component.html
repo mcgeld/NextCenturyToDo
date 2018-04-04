@@ -25,6 +25,9 @@
                                 <input #todoInput class="todoInput" (keyup.enter)="saveTodo(todo, todoInput.value)" type="text" value="{{todo.name}}">
                             </div>
                             <div class="todoButtons col-sm-2">
+                                <button class="btn btn-danger" (click)="deleteTodo(todo)">
+                                    <i class="fa fa-times"></i>
+                                </button>
                                 <button class="btn btn-primary" (click)="saveTodo(todo, todoInput.value)">
                                     <i class="fas fa-save"></i>
                                 </button>
